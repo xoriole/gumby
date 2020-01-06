@@ -79,7 +79,8 @@ fi
 #SRC_DIR="$PWD/src"
 #PYTHONPATH="$PYTHONPATH:"$SRC_DIR/pyipv8":"$SRC_DIR/anydex":"$SRC_DIR/tribler-common":"$SRC_DIR/tribler-core":"$SRC_DIR/tribler-gui""
 #export PYTHONPATH
-#echo PYTHONPATH set to $PYTHONPATH
+echo PYTHONPATH set to $PYTHONPATH
+python3 -c 'import ipv8'
 
 # TODO(emilon): Make the timeout configurable
 
