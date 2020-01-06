@@ -76,10 +76,10 @@ else
 fi
 
 # Setup PYTHONPATH to include all the required modules
-SRC_DIR="$PWD/src"
-PYTHONPATH="$PYTHONPATH:"$SRC_DIR/pyipv8":"$SRC_DIR/anydex":"$SRC_DIR/tribler-common":"$SRC_DIR/tribler-core":"$SRC_DIR/tribler-gui""
-export PYTHONPATH
-echo PYTHONPATH set to $PYTHONPATH
+#SRC_DIR="$PWD/src"
+#PYTHONPATH="$PYTHONPATH:"$SRC_DIR/pyipv8":"$SRC_DIR/anydex":"$SRC_DIR/tribler-common":"$SRC_DIR/tribler-core":"$SRC_DIR/tribler-gui""
+#export PYTHONPATH
+#echo PYTHONPATH set to $PYTHONPATH
 
 # TODO(emilon): Make the timeout configurable
 
