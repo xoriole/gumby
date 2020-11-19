@@ -66,6 +66,29 @@ class PopularityModule(IPv8OverlayExperimentModule):
         self.autoplot_create('num_healths', 'Number of torrent healths')
 
     @experiment_callback
+    def set_num_random_torrents(self, count):
+        PopularityCommunity.GOSSIP_RANDOM_TORRENT_COUNT = count
+
+    @experiment_callback
+    def set_num_popular_torrents(self, count):
+        PopularityCommunity.GOSSIP_POPULAR_TORRENT_COUNT = count
+
+    @experiment_callback
+    def set_gossip_interval(self, interval):
+        PopularityCommunity.GOSSIP_INTERVAL = interval
+
+    def get_torrents_info_tuple(self):
+        with db_session:
+            return count(ts for ts in self.session.mds.TorrentState), \
+                    count(ts for ts in self.session.mds.TorrentState if ts.seeders > 0)
+
+    def check(self):
+        torrents_total, torrents_with_seeders = self.get_torrents_info_tuple()
+
+        self.autoplot_add_point("total_torrents", torrents_total)
+        self.autoplot_add_point("alive_torrents", torrents_with_seeders)
+
+    @experiment_callback
     def start_health_poll(self, interval):
         self.health_poll_lc = run_task(self.write_periodic_torrent_health_statistics, interval=int(interval))
 
